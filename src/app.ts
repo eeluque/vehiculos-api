@@ -1,17 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser'
-import vehicleRoutes from './routes/index';
-
-
+import vehicleRouter from './routes/vehicleRoutes';
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
 
-// Monta ruta para vehiculos
-app.use('/vehicles', vehicleRoutes);
-
-// Handler para errores luego
+app.use('/vehiculos', vehicleRouter);
 
 export default app;
