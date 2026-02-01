@@ -3,7 +3,7 @@ import { addVehicle, deleteVehicleById, getVehicles, updateVehicleByPlate } from
 
 const vehicleRouter = express.Router();
 
-//ruta principal de vehiculos y obtiene todos los vehiculos en la BD
+//CRUD para vehiculos
 vehicleRouter.get('/', getVehicles)
 
 vehicleRouter.delete('/:id', deleteVehicleById)
@@ -11,5 +11,9 @@ vehicleRouter.delete('/:id', deleteVehicleById)
 vehicleRouter.post('/', addVehicle)
 
 vehicleRouter.patch('/:plate', updateVehicleByPlate)
+
+
+
+
 
 export default vehicleRouter;

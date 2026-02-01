@@ -1,5 +1,5 @@
 import supabase from "../config/database";
-import { Request, Response } from 'express'; // Ensure you import Request and Response
+import { Request, Response } from 'express';
 
 
 export async function getVehicles(req: Request, res: Response) {
