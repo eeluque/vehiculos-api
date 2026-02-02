@@ -6,7 +6,11 @@ export async function getVehicles(req: Request, res: Response) {
     const { data, error } = await supabase
         .from('vehiculos')
         .select()
-    res.json(data)
+    if (error) return res.status(500).json({ error: error.message });
+    res.status(201).json({
+        mensaje: 'Vehiculos recolectados',
+        data: data
+    })
 }
 
 export async function deleteVehicleById(req: Request, res: Response) {
@@ -22,6 +26,7 @@ export async function addVehicle(req: Request, res: Response) {
     const { error } = await supabase
         .from('vehiculos')
         .insert({ placa: placa, modelo: modelo, marca: marca, creado: creado, actualizado: actualizado })
+    if (error) return res.status(500).json({ error: error.message });
     res.status(201).json({
         mensaje: 'Vehiculo creado'
     })
