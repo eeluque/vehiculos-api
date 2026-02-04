@@ -1,19 +1,21 @@
 import express, { Request, Response, NextFunction } from 'express';
 import vehicleRouter from './routes/vehicleRoutes';
 import movementRouter from './routes/movementRoutes';
+import cors from 'cors';
 
 const app = express();
 
-// CORS manual: headers en todas las respuestas + manejo explícito de preflight (OPTIONS)
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(204);
-    }
-    next();
-});
+
+app.use(cors({
+    origin: [
+        "https://vehiculos-70r7i6g2j-eduardo-luques-projects.vercel.app",
+        "http://localhost:3000"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+app.options("*", cors());
+
 
 app.use(express.json());
 
