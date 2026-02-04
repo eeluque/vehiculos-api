@@ -4,9 +4,9 @@ export const createMovementSchema = z.object({
     direccion: z.string().min(1, 'La dirección es requerida'),
     vehiculo_placa: z.string().min(1, 'La placa del vehículo es requerida'),
     nombre_conductor: z.string().min(1, 'El nombre del conductor es requerido'),
-    ocurrio: z.string().datetime().optional(),
+    ocurrio: z.string().datetime(),
     creado: z.string().datetime().optional(),
-    kilometraje: z.number().nonnegative().optional(),
+    kilometraje: z.number().nonnegative(),
 });
 
 export const updateMovementSchema = z.object({
