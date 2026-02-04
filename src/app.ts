@@ -11,15 +11,10 @@ app.use(cors({
         "https://vehiculos-70r7i6g2j-eduardo-luques-projects.vercel.app",
         "http://localhost:3000"
     ],
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"]
 }));
-app.options("/*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", req.headers.origin);
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.sendStatus(200);
-});
 
 app.use(express.json());
 
