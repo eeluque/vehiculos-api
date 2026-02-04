@@ -7,18 +7,22 @@ export async function getVehicles(req: Request, res: Response) {
         .from('vehiculos')
         .select()
     if (error) return res.status(500).json({ error: error.message });
-    res.status(201).json({
+    res.status(200).json({
         mensaje: 'Vehiculos recolectados',
         data: data
     })
 }
 
 export async function deleteVehicleById(req: Request, res: Response) {
-    const response = await supabase
+    const { data, error } = await supabase
         .from('vehiculos')
         .delete()
         .eq('id', req.params.id)
-    res.json(response)
+
+    if (error) return res.status(500).json({ error: error.message });
+    res.status(204).json({
+        mensaje: 'Vehiculos borrado',
+    })
 }
 
 export async function addVehicle(req: Request, res: Response) {
@@ -60,7 +64,7 @@ export async function updateVehicleByPlate(req: Request, res: Response) {
     const { data, error } = await supabase
         .from('vehiculos')
         .upsert(update)
-        .eq('placa', req.params.placa)
+        .eq('placa', plateParameter)
 
     if (error) return res.status(500).json({ error: error.message });
     return res.status(200).json({ mensaje: 'Vehiculo actualizado', data });

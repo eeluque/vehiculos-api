@@ -18,14 +18,18 @@ export async function deleteMovementById(req: Request, res: Response) {
         .from('movimientos_vehiculo')
         .delete()
         .eq('id', req.params.id)
+
+    res.status(204).json({
+        mensaje: 'Vehiculo eliminado',
+    })
 }
 
 
 export async function addMovement(req: Request, res: Response) {
-    const { direccion, vehiculo_placa, nombre_conductor, occurio, creado, kilometraje } = req.body;
+    const { direccion, vehiculo_placa, nombre_conductor, ocurrio, creado, kilometraje } = req.body;
     const { error } = await supabase
         .from('movimientos_vehiculo')
-        .insert({ direccion: direccion, vehiculo_placa: vehiculo_placa, nombre_conductor: nombre_conductor, creado: creado, kilometraje: kilometraje })
+        .insert({ direccion: direccion, vehiculo_placa: vehiculo_placa, nombre_conductor: nombre_conductor, creado: creado, kilometraje: kilometraje, ocurrio: ocurrio })
 
     if (error) return res.status(500).json({ error: error.message });
     res.status(201).json({

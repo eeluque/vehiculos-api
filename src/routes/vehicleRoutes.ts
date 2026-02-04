@@ -1,5 +1,7 @@
 import express from 'express'
 import { addVehicle, deleteVehicleById, getVehicles, updateVehicleByPlate } from '../controllers/vehicleController';
+import { validateBody } from '../middleware/validate';
+import { createVehicleSchema, updateVehicleSchema } from '../models/vehicleSchema';
 
 const vehicleRouter = express.Router();
 
@@ -8,9 +10,9 @@ vehicleRouter.get('/', getVehicles)
 
 vehicleRouter.delete('/:id', deleteVehicleById)
 
-vehicleRouter.post('/', addVehicle)
+vehicleRouter.post('/', validateBody(createVehicleSchema), addVehicle)
 
-vehicleRouter.patch('/:plate', updateVehicleByPlate)
+vehicleRouter.patch('/:plate', validateBody(updateVehicleSchema), updateVehicleByPlate)
 
 
 
