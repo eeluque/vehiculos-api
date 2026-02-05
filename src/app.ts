@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors({
     origin: [
-        "https://vehiculos-70r7i6g2j-eduardo-luques-projects.vercel.app",
+        "https://vehiculos-app-zeta.vercel.app",
         "http://localhost:3000"
     ],
     credentials: true,
