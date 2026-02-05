@@ -6,9 +6,6 @@ export async function getVehicles(req: Request, res: Response) {
     const { data, error } = await supabase
         .from('vehiculos')
         .select()
-
-    console.log("Supabase response:", { data, error });
-
     if (error) return res.status(500).json({ error: error.message });
     res.status(200).json({
         mensaje: 'Vehiculos recolectados',
