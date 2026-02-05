@@ -33,19 +33,14 @@ API_KEY=tu_clave_de_api_de_supabase
 PORT=3001
 ```
 
-2. Obtén tu `API_KEY` desde el panel de Supabase:
-   - Entra a tu proyecto en [Supabase](https://app.supabase.com)
-   - Ve a **Settings** → **API**
-   - Copia la clave **anon** o **service_role** según los permisos que necesites
-
-> **Nota:** El archivo `.env` no se sube al repositorio por seguridad. No compartas tu clave de API.
+2. Usar  `API_KEY` proporcionada
 
 ## Iniciar en desarrollo
 
 Ejecuta el servidor con recarga automática (nodemon):
 
 ```bash
-npm start
+npm run dev
 ```
 
 La API estará disponible en `http://localhost:3001` (o en el puerto definido en `PORT`).
